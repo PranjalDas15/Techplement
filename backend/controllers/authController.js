@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // Validate input
+        // Validating input
         if (!name) {
             return res.status(400).json({ error: 'Name is required' });
         }
@@ -28,8 +28,6 @@ const registerUser = async (req, res) => {
         if (exist) {
             return res.status(400).json({ error: 'Email is already taken' });
         }
-
-        // Hash the password
         const hashedPassword = await hashPassword(password);
 
         // Create new user
@@ -71,17 +69,16 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ error: 'Incorrect password' });
         }
 
-        // Create and send token
         const token = jwt.sign({ email: user.email, id: user._id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        // Set cookie options
+        // Setting cookie
         const cookieOptions = {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
             sameSite: 'lax'
         };
 
-        // Set the cookie
+        
         res.cookie('token', token, cookieOptions);
         return res.status(200).json(user);
 
@@ -94,7 +91,7 @@ const loginUser = async (req, res) => {
 
 // Get Profile
 const getProfile = (req, res) => {
-    const { token } = req.cookies; // Ensure cookie-parser middleware is being used
+    const { token } = req.cookies; 
     if (!token) {
         return res.status(401).json({ error: 'No token provided' });
     }
@@ -103,15 +100,15 @@ const getProfile = (req, res) => {
         if (err) {
             return res.status(401).json({ error: 'Invalid token' });
         }
-        res.json({ email: decoded.email, name: decoded.name, _id: decoded.id }); // Send user data
+        res.json({ email: decoded.email, name: decoded.name, _id: decoded.id }); 
     });
 };
 
 
 // Logout
 const logoutUser = (req, res) => {
-    res.clearCookie('token'); // Clear the cookie
-    res.status(200).json({ message: 'Logged out successfully' }); // Respond to client
+    res.clearCookie('token'); 
+    res.status(200).json({ message: 'Logged out successfully' });
 };
 
 module.exports = {

@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 const SavedQuotes = require('../models/savedQuotes'); 
 
-// Route to save a quote
 router.post('/save-quote', async (req, res) => {
   const { userId, quote, author } = req.body; 
   
+  // Save a quote for the user
   try {
-    // Save the new quote for the user
     const newSavedQuote = new SavedQuotes({
       userId, 
       quote,
@@ -23,7 +22,8 @@ router.post('/save-quote', async (req, res) => {
   }
 });
 
-// Fetch saved quotes for a specific user
+
+// Fetch saved quotes for a specific user for (for Favourite tab in frontend)
 router.get('/saved-quotes/:userId', async (req, res) => {
   const { userId } = req.params;
 
@@ -37,6 +37,7 @@ router.get('/saved-quotes/:userId', async (req, res) => {
   }
 });
 
+// Deleting a saved quote for that specific user
 router.delete('/delete-quote/:id', async (req, res) => {
     const { id } = req.params;
   
