@@ -62,7 +62,7 @@ function App() {
           handleSearch={handleSearch} 
         />
         <Routes>
-          <Route path="/"   element={<Home searchedQuote={searchedQuote} searchedAuthor={searchedAuthor}  fetchRandomQuote={fetchRandomQuote}/>}/>
+          <Route path="/" element={<Home searchedQuote={searchedQuote} searchedAuthor={searchedAuthor}  fetchRandomQuote={fetchRandomQuote}/>}/>
           <Route path="/favourites" element={<Favourites/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>

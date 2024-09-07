@@ -5,14 +5,14 @@ import { UserContext } from '../../context/userContext';
 import bin from '../components/Assets/delete.svg';
 
 export default function Favourites() {
-    const { user } = useContext(UserContext); // Access user from context
+    const { user } = useContext(UserContext); 
     const [savedQuotes, setSavedQuotes] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchSavedQuotes = async () => {
             if (!user) {
-                toast.error('User not logged in.');
+                
                 setLoading(false);
                 return;
             }
@@ -29,7 +29,6 @@ export default function Favourites() {
                 setLoading(false);
             }
         };
-
         fetchSavedQuotes();
     }, [user]);
 
@@ -39,7 +38,7 @@ export default function Favourites() {
                 withCredentials: true
             });
             toast.success('Quote deleted successfully!');
-            // Refresh the list of saved quotes
+            
             setSavedQuotes(savedQuotes.filter(quote => quote._id !== id));
         } catch (error) {
             console.error('Error deleting quote:', error);

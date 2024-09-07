@@ -13,9 +13,9 @@ export function UserContextProvider({ children }) {
                 const response = await axios.get('http://localhost:8000/profile', { withCredentials: true });
                 setUser(response.data);
             } catch (error) {
-                setUser(null); // User is not logged in
+                setUser(null);
             } finally {
-                setLoading(false); // Stop loading state
+                setLoading(false);
             }
         };
 
@@ -24,7 +24,7 @@ export function UserContextProvider({ children }) {
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
-            {!loading ? children : <div>Loading...</div>} {/* Render content after user is fetched */}
+            {children}
         </UserContext.Provider>
     );
 }

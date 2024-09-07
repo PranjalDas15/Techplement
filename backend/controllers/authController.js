@@ -77,8 +77,8 @@ const loginUser = async (req, res) => {
         // Set cookie options
         const cookieOptions = {
             httpOnly: true,
-            secure: false, // Set to true if using HTTPS in production
-            sameSite: 'lax' // or 'strict'
+            secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
+            sameSite: 'lax'
         };
 
         // Set the cookie

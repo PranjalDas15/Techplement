@@ -73,13 +73,13 @@ export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) 
           {!user && (
             <>
               <li className='mx-5'>
-                <a href="/login" className='text-white w-[100px] flex justify-center items-center py-2 rounded-3xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:left-3 hover:border-transparent'>
+                <a href="/login" className='text-white w-[120px] flex justify-center items-center py-2 rounded-3xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:left-3 hover:border-transparent'>
                   <img src={login} width={25} alt="" />
                   <p className='mx-2'>Login</p>
                 </a>
               </li>
               <li className='mx-5'>
-                <a href="/register" className='text-white w-[100px] flex justify-center items-center py-2 rounded-3xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:left-3 hover:border-transparent'>
+                <a href="/register" className='text-white w-[120px] flex justify-center items-center py-2 rounded-3xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:left-3 hover:border-transparent'>
                   <img src={register} width={25} alt="" />
                   <p className='mx-2'>Register</p>
                 </a>
@@ -115,7 +115,7 @@ export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) 
                   </a>
                 </li>
                 <li className='w-full'>
-                  <button onClick={handleLogout} className='text-white w-full flex justify-center items-center py-5 rounded-3xl mb-2 font-semibold text-xl border-white bg-black border-2 hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:border-transparent'>
+                  <button onClick={() => {handleLogout(), handleCloseProfile()}} className='text-white w-full flex justify-center items-center py-5 rounded-3xl mb-2 font-semibold text-xl border-white bg-black border-2 hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:border-transparent'>
                     <img src={logout} width={25} alt="" />
                     <p className='mx-2'>Logout</p>
                   </button>
@@ -169,7 +169,7 @@ export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) 
                       </a>
                   </li>
                   <li className='w-full'>
-                    <button onClick={handleLogout} className='text-white w-full flex justify-center items-center py-5 rounded-3xl mb-2 font-semibold text-xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:border-transparent'>
+                    <button onClick={() => {handleLogout(), handleClose()}} className='text-white w-full flex justify-center items-center py-5 rounded-3xl mb-2 font-semibold text-xl border-white border-2 bg-black hover:bg-gradient-to-r from-blue-400 to-violet-400 hover:border-transparent'>
                       <img src={logout} width={25} alt="" />
                       <p className='mx-2'>Logout</p>
                     </button>
