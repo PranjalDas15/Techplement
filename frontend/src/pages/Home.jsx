@@ -24,7 +24,6 @@ export default function Home({ searchedQuote, searchedAuthor }) {
         }
     }, [searchedQuote, searchedAuthor]);
 
-    // Function to fetch a random quote
     const fetchRandomQuote = () => {
         fetch("http://api.quotable.io/random")
             .then(res => res.json())

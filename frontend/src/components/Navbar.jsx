@@ -16,7 +16,8 @@ import search from '../components/Assets/search.svg';
 
 export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) {
 
-  // calling the current user in session
+  // Calling the current user in session
+  
   const { user, setUser } = useContext(UserContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,8 @@ export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) 
   const handleClose = () => setIsOpen(false);
   const handleCloseProfile = () => setIsOpenProfile(false)
 
+  // Logot and clear local storage and update user state
+
   const handleLogout = async () => {
     try {
         await fetch('http://localhost:8000/logout', {
@@ -33,7 +36,6 @@ export default function Navbar({ searchAuthor, setSearchAuthor, handleSearch }) 
             credentials: 'include', 
         });
 
-        // Clear local storage and update user state
         localStorage.removeItem('authToken');
         setUser(null);
         navigate('/login');
